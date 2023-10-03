@@ -13,11 +13,11 @@ export const getRestaurants = () => async (dispatch) => {
     dispatch({ type: ALL_RESTAURANTS_REQUEST });
     let link = "/api/v1/eats/stores"; //this is added to the proxy set link
     const { data } = await axios.get(link);
-    const { restaurant, count } = data;
+    const { restaurants, count } = data;
 
     dispatch({
       type: ALL_RESTAURANTS_SUCCESS,
-      payload: { restaurant, count },
+      payload: { restaurants, count },
     });
   } catch (error) {
     dispatch({
@@ -27,7 +27,7 @@ export const getRestaurants = () => async (dispatch) => {
   }
 };
 
-export const CLEAR_ERRORS = () => async (dispatch) => {
+export const clearErrors = () => async (dispatch) => {
   dispatch({
     type: CLEAR_ERRORS,
   });
