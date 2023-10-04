@@ -9,7 +9,7 @@ import Restaurant from "./Restaurant";
 import Loader from "./Layout/Loader";
 import Message from "./Message";
 import { useDispatch, useSelector } from "react-redux";
-import CountRestaurants from "./CountRestaurants";
+import CountRestaurant from "./CountRestaurant";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Home = () => {
 
   return (
     <>
-      <CountRestaurants />
+      <CountRestaurant />
       {restaurantsLoading ? (
         <Loader />
       ) : restaurantsError ? (

@@ -38,7 +38,7 @@ export const restaurantReducer = (state = initialState, action) => {
       return {
         ...state,
         showVegOnly: !state.showVegOnly,
-        pureVegRestaurantCount: calculatePureVegCount(
+        pureVegRestaurantsCount: calculatePureVegCount(
           state.restaurants.restaurants,
           !state.showVegOnly
         ),

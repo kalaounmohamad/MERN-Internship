@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getRestaurants } from "../actions/restaurantAction";
+import "./css/count.css";
 
-const CountRestaurants = () => {
+const CountRestaurant = () => {
   const dispatch = useDispatch();
   const { count, pureVegRestaurantsCount, showVegOnly, loading, error } =
     useSelector((state) => state.restaurants);
@@ -36,4 +37,4 @@ const CountRestaurants = () => {
   );
 };
 
-export default CountRestaurants;
+export default CountRestaurant;
