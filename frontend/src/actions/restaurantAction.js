@@ -6,6 +6,9 @@ import {
   ALL_RESTAURANTS_SUCCESS,
   ALL_RESTAURANTS_FAIL,
   CLEAR_ERRORS,
+  SORT_BY_RATINGS,
+  SORT_BY_REVIEWS,
+  TOGGLE_VEG_ONLY,
 } from "../constants/restaurantConstant";
 
 export const getRestaurants = () => async (dispatch) => {
@@ -25,6 +28,22 @@ export const getRestaurants = () => async (dispatch) => {
       payload: error.response.data.message,
     });
   }
+};
+
+export const sortByRatings = () => {
+  return {
+    type: SORT_BY_RATINGS,
+  };
+};
+
+export const sortByReviews = () => {
+  return {
+    type: SORT_BY_REVIEWS,
+  };
+};
+
+export const toggleVegOnly = () => (dispatch) => {
+  dispatch({ type: TOGGLE_VEG_ONLY });
 };
 
 export const clearErrors = () => async (dispatch) => {
