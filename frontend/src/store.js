@@ -4,13 +4,13 @@ import {
   applyMiddleware,
   compose,
 } from "redux";
-
-import { restaurantReducer } from "./reducers/restaurantReducer";
-
 import thunk from "redux-thunk";
+import { restaurantReducer } from "./reducers/restaurantReducer";
+import { menuReducer } from "./reducers/menuReducer";
 
 const reducer = combineReducers({
   restaurants: restaurantReducer,
+  menus: menuReducer,
 });
 
 let initialState = {};

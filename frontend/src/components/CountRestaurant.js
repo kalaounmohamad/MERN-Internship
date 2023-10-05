@@ -24,11 +24,11 @@ const CountRestaurant = () => {
           <span className="Restro">
             {showVegOnly
               ? pureVegRestaurantsCount === 1
-                ? "restaurant"
-                : "restaurants"
+                ? " restaurant"
+                : " restaurants"
               : count === 1
-              ? "restaurant"
-              : "restaurants"}
+              ? " restaurant"
+              : " restaurants"}
           </span>
           <hr />
         </p>
