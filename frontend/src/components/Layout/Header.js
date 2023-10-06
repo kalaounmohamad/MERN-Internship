@@ -1,7 +1,11 @@
 //rafce
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <>
       <nav className="navbar row sticky-top">
@@ -29,12 +33,14 @@ const Header = () => {
           <button className="btn" id="login_btn">
             Login
           </button>
-          <span className="ml-3" id="cart">
-            Cart
-          </span>
-          <span className="ml-1" id="cart_count">
-            2
-          </span>
+          <Link to="/cart" style={{ textDecoration: "none" }}>
+            <span className="ml-3" id="cart">
+              Cart
+            </span>
+            <span className="ml-1" id="cart_count">
+              {cartItems.length}
+            </span>
+          </Link>
         </div>
       </nav>
     </>
@@ -42,5 +48,3 @@ const Header = () => {
 };
 
 export default Header;
-
-//rfce

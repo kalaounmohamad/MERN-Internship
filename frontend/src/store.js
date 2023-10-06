@@ -7,10 +7,12 @@ import {
 import thunk from "redux-thunk";
 import { restaurantReducer } from "./reducers/restaurantReducer";
 import { menuReducer } from "./reducers/menuReducer";
+import { cartReducer } from "./reducers/cartReducer";
 
 const reducer = combineReducers({
   restaurants: restaurantReducer,
   menus: menuReducer,
+  cart: cartReducer,
 });
 
 let initialState = {};

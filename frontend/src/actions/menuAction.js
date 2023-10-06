@@ -10,7 +10,9 @@ export const getMenus = (id) => async (dispatch) => {
     dispatch({
       type: GET_MENU_REQUEST,
     });
-    const response = await axios.get(`api/v1/eats/stores/${id}/menus`);
+    const response = await axios.get(`/api/v1/eats/stores/${id}/menus`);
+    console.log(response);
+
     dispatch({
       type: GET_MENU_SUCCESS,
       payload: response.data.data[0].menu,
