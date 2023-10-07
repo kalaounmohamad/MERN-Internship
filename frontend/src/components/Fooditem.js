@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
+
 import {
   addItemToCart,
   updateCartQuantity,
@@ -18,6 +19,16 @@ const Fooditem = ({ fooditem }) => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
+
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+  useEffect(() => {
+    const cartItem = cartItems.find((item) => item.fooditem === fooditem._id);
+    if (cartItem) {
+      setQuantity(cartItem.quantity);
+      setShowButtons(true);
+    }
+  }, [cartItems, fooditem]);
 
   const decreaseQty = () => {
     if (quantity > 1) {
@@ -57,6 +68,7 @@ const Fooditem = ({ fooditem }) => {
 
   const showAddToCartButton = () => {
     setShowButtons(true);
+    increaseQty();
   };
   return (
     <div className="col-sm-12 col-md-6 col-lg-3 my-3">

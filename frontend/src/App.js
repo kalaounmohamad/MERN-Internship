@@ -4,6 +4,8 @@ import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Menu from "./components/Menu";
+import Cart from "./components/cart/Cart";
+import Delivery from "./components/cart/Delivery";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} exact />
             <Route path="/eats/stores/:id/menus" element={<Menu />} exact />
+            <Route path="/cart" element={<Cart />} exact />
+            <Route path="/delivery" element={<Delivery />} />
           </Routes>
         </div>
         <Footer />

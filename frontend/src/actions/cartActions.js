@@ -4,6 +4,8 @@ import {
   REMOVE_ITEM_CART,
   UPDATE_CART_QUANTITY,
   CLEAR_CART,
+  SAVE_DELIVERY_INFO,
+  UPDATE_DELIVERY_INFO,
 } from "../constants/cartConstant";
 
 export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
@@ -56,4 +58,34 @@ export const clearCart = () => (dispatch) => {
     type: CLEAR_CART,
   });
   localStorage.removeItem("cartItem");
+};
+
+export const saveDeliveryInfo = (deliveryInfo) => (dispatch, getState) => {
+  try {
+    const existingDeliveryInfo = getState().cart.deliveryInfo;
+    if (existingDeliveryInfo) {
+      dispatch({
+        type: UPDATE_DELIVERY_INFO,
+        payload: deliveryInfo,
+      });
+    } else {
+      dispatch({
+        type: SAVE_DELIVERY_INFO,
+        payload: deliveryInfo,
+      });
+    }
+  } catch (error) {
+    alert.error("Error saving your information");
+  }
+};
+
+const updateDeliveryInfo = (deliveryInfo) => (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_DELIVERY_INFO,
+      payload: deliveryInfo,
+    });
+  } catch (error) {
+    alert.error("Error updating the info");
+  }
 };
