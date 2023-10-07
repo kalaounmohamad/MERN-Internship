@@ -15,6 +15,7 @@ import Profile from "./components/user/Profile";
 import UpdateProfile from "./components/user/UpdateProfile";
 import ForgotPassword from "./components/user/ForgotPassword";
 import NewPassword from "./components/user/NewPassword";
+import ConfirmOrder from "./components/cart/ConfirmOrder";
 
 function App() {
   useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
               element={<NewPassword />}
               exact
             />
+            <Route path="/confirm" element={<ConfirmOrder />} />
           </Routes>
         </div>
         <Footer />

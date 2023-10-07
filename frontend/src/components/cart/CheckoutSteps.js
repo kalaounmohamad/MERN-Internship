@@ -6,6 +6,7 @@ const CheckoutSteps = ({ delivery, confirmOrder, payment }) => {
     <div className="checkout-progress d-flex justify-content-center mt-5">
       {/* DELIVERY */}
       {delivery ? (
+        // HERE I ADDED /
         <Link to="/shipping" className="float-right">
           <div className="triangle2-active"></div>
           <div className="step active-step">Address</div>
