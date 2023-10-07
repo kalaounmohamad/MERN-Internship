@@ -11,6 +11,10 @@ import Register from "./components/user/Register";
 import { useEffect } from "react";
 import { loadUser } from "./actions/userActions";
 import store from "./store";
+import Profile from "./components/user/Profile";
+import UpdateProfile from "./components/user/UpdateProfile";
+import ForgotPassword from "./components/user/ForgotPassword";
+import NewPassword from "./components/user/NewPassword";
 
 function App() {
   useEffect(() => {
@@ -31,6 +35,18 @@ function App() {
             {/* User  */}
             <Route path="/users/login" element={<Login />} />
             <Route path="/users/signup" element={<Register />} />
+            <Route path="/users/me" element={<Profile />} />
+            <Route path="/users/me/update" element={<UpdateProfile />} exact />
+            <Route
+              path="/users/forgetPassword"
+              element={<ForgotPassword />}
+              exact
+            />
+            <Route
+              path="/users/resetPassword/:token"
+              element={<NewPassword />}
+              exact
+            />
           </Routes>
         </div>
         <Footer />

@@ -51,7 +51,7 @@ export const login = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: error.response.data.message,
+      payload: "Login Failed",
     });
   }
 };
@@ -64,7 +64,7 @@ export const register = (userData) => async (dispatch) => {
 
     const config = {
       headers: {
-        "Content-type": "multipart/form-data",
+        "Content-Type": "multipart/form-data",
       },
     };
     const { data } = await axios.post("/api/v1/users/signup", userData, config);
@@ -105,34 +105,32 @@ export const loadUser = () => async (dispatch) => {
 
 // update profile action
 
-export const updateProfile =
-  ({ userData }) =>
-  async (dispatch) => {
-    try {
-      dispatch({
-        type: UPDATE_PROFILE_REQUEST,
-      });
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-      const { data } = await axios.put(
-        "/api/v1/users/me/update",
-        userData,
-        config
-      );
-      dispatch({
-        type: UPDATE_PROFILE_SUCCESS,
-        payload: data.success,
-      });
-    } catch (error) {
-      dispatch({
-        type: UPDATE_PROFILE_FAIL,
-        payload: error.response.data.message,
-      });
-    }
-  };
+export const updateProfile = (userData) => async (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_PROFILE_REQUEST,
+    });
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
+    const { data } = await axios.put(
+      "/api/v1/users/me/update",
+      userData,
+      config
+    );
+    dispatch({
+      type: UPDATE_PROFILE_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PROFILE_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // update password action
 export const updatePassword = (passwords) => async (dispatch) => {
