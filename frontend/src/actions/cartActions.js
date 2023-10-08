@@ -6,6 +6,7 @@ import {
   CLEAR_CART,
   SAVE_DELIVERY_INFO,
   UPDATE_DELIVERY_INFO,
+  SET_RESTAURANT_ID,
 } from "../constants/cartConstant";
 
 export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
@@ -64,13 +65,20 @@ export const saveDeliveryInfo = (deliveryInfo) => (dispatch) => {
   dispatch({ type: SAVE_DELIVERY_INFO, payload: deliveryInfo });
 };
 
-const updateDeliveryInfo = (deliveryInfo) => (dispatch) => {
+export const updateDeliveryInfo = (deliveryInfo) => (dispatch) => {
   try {
     dispatch({
       type: UPDATE_DELIVERY_INFO,
       payload: deliveryInfo,
     });
   } catch (error) {
-    alert.error("Error updating the info");
+    // alert.error("Error updating the info");
   }
+};
+
+export const setRestaurantId = (id) => {
+  return {
+    type: SET_RESTAURANT_ID,
+    payload: id,
+  };
 };
