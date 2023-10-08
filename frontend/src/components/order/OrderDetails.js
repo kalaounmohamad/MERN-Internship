@@ -4,8 +4,43 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faIndianRupeeSign } from "@fortawesome/free-solid-svg-icons";
+import Loader from "../Layout/Loader";
+import { getOrderDetails, clearErrors } from "../../actions/orderActions";
 
 const OrderDetails = ({}) => {
+  const alert = useAlert();
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const {
+    loading,
+    error,
+    order = {},
+  } = useSelector((state) => state.orderDetails);
+
+  const {
+    deliveryInfo,
+    orderItems,
+    paymentInfo,
+    user,
+    finalTotal,
+    orderStatus,
+  } = order;
+
+  useEffect(() => {
+    dispatch(getOrderDetails(id));
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, alert, error, id]);
+
+  const deliveryDetails =
+    deliveryInfo &&
+    `${deliveryInfo.address},${deliveryInfo.city},${deliveryInfo.postalCode},${deliveryInfo.country}`;
+
+  const isPaid =
+    paymentInfo && paymentInfo.status === "succeeded" ? true : false;
+
   return (
     <>
       {loading ? (
